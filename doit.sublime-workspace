@@ -1,0 +1,249 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"con",
+				"console"
+			],
+			[
+				"co",
+				"console"
+			],
+			[
+				"user",
+				"username"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"fu",
+				"function"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/User/Node.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: Inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Me",
+				"View: Toggle Menu"
+			],
+			[
+				"Package Control: iN",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/E/Code/jQueryGantt-master/hasExternalDeps.png",
+		"/C/Users/wangdawei/AppData/Roaming/Sublime Text 2/Packages/User/Git.sublime-settings",
+		"/E/Code/ludo-jquery-treetable-5719a6e/javascripts/src/jquery.treetable.js",
+		"/C/Users/wangdawei/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/E/Code/http/index.js",
+		"/E/Code/jquery-ui-1.10.1.custom/js/jquery-1.9.1.js",
+		"/D/Download/random.js",
+		"/E/Code/ludo-jquery-treetable-5719a6e/index.html",
+		"/E/David/SkyDrive/Code/zt2-pm/test.html",
+		"/E/Code/jquery-ui-1.10.1.custom/index.html",
+		"/E/David/SkyDrive/Code/zt2-pm/jquery-1.9.1.js",
+		"/C/Users/wangdawei/Desktop/jquery-1.9.1.js"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"<open folders>"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"teamworkIcon",
+			"scrollLeft",
+			"centerOnToday",
+			"refreshTaskRow",
+			"updateLinks",
+			"addTask",
+			"teamworkGantDemo",
+			"loadFromLocalStorage",
+			"loadGanttFromServer",
+			"setRoles",
+			"loadGanttFromServer",
+			"loadFromLocalStorage",
+			"loadTasks",
+			"loadProject",
+			"addTask",
+			"TASKROW",
+			"depends",
+			"updateLink",
+			"updateLinks",
+			"beginTransaction",
+			"__currentTransaction",
+			"beginTransaction",
+			"taZone",
+			"localStorage",
+			"loadFromLocalStorage",
+			"loadGanttFromServer",
+			"taskSelector",
+			"loadGanttFromServer",
+			"_decorators",
+			"loadTemplates",
+			"gantEditorTemplates",
+			"GANTBUTTONS",
+			"GANTTBUT",
+			"Event(",
+			"Event",
+			"refreshTasks",
+			"loadI18n",
+			"ganttemplates",
+			"setRoles",
+			"$",
+			"gridify",
+			"TASKSEDITHEAD",
+			"links",
+			"getSuperiors",
+			"incrementDateByWorkingDays",
+			"isHoliday",
+			"computeStart",
+			"isHoliday",
+			"getResource",
+			"Assignment",
+			"computeStart",
+			"__template__",
+			"localStorage",
+			"loadGanttFromServer",
+			"loadI18n",
+			"gantEditorTemplates",
+			"ganttButtonBar",
+			"loadTemplates",
+			"loadGanttFromServer",
+			"ganttemplates",
+			"treetable",
+			"example-advance",
+			"example-basic-expandable",
+			"example-basic"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 233.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 233.0,
+	"status_bar_visible": true
+}
