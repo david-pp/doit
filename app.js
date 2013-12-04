@@ -9,10 +9,9 @@ var express = require('express')
   , http = require('http')
   , path = require('path');
 
-var users = {
-  tj: { name: 'tj' }
-};
+var redis = require('./db');
 
+//redis.set('name', 'david david');
 
 var app = express();
 
@@ -43,7 +42,6 @@ app.configure('development', function(){
 
 // middleware
 
-
 // Session-persisted message middleware
 app.use(function(req, res, next){
   var err = req.session.error
@@ -61,7 +59,7 @@ app.get('/users', user.list);
 
 app.post('/login', routes.login);
 app.get('/logout', routes.logout);
-
+app.get('/u/:user', routes.user);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

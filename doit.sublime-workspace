@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"lo",
+				"login"
+			],
+			[
+				"log",
+				"logout"
+			],
+			[
 				"con",
 				"console"
 			],
@@ -68,6 +76,17 @@
 	},
 	"file_history":
 	[
+		"/C/Users/wangdawei/AppData/Roaming/Sublime Text 2/Packages/User/Node.sublime-build",
+		"/E/Code/doit/views/index.ejs",
+		"/E/Code/doit/routes/index.js",
+		"/E/Code/express/examples/auth/app.js",
+		"/E/Code/doit/app.js",
+		"/E/Code/doit/public/test1.html",
+		"/E/Code/doit/public/index.html",
+		"/E/Code/doit/bootstrap/test3.html",
+		"/E/Code/doit/bootstrap/test2.html",
+		"/E/Code/doit/bootstrap/test1.html",
+		"/E/Code/doit/README.md",
 		"/E/Code/jQueryGantt-master/hasExternalDeps.png",
 		"/C/Users/wangdawei/AppData/Roaming/Sublime Text 2/Packages/User/Git.sublime-settings",
 		"/E/Code/ludo-jquery-treetable-5719a6e/javascripts/src/jquery.treetable.js",
@@ -98,6 +117,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"glyphicons-halflings",
+			"glyphicons",
+			"css",
+			"navbar",
 			"teamworkIcon",
 			"scrollLeft",
 			"centerOnToday",
@@ -217,7 +240,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 233.0
+		"height": 120.0
 	},
 	"replace":
 	{

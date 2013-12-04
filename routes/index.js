@@ -1,3 +1,5 @@
+var redis = require('./../db');
+
 
 /*
  * GET home page.
@@ -11,6 +13,7 @@ exports.index = function(req, res){
 exports.login = function(req, res){
 	console.log(req.body);
 
+  console.log("login.....")
 	res.redirect('/');
 
 	/*
@@ -44,4 +47,9 @@ exports.logout = function(req, res){
   req.session.destroy(function(){
     res.redirect('/');
     });
+}
+
+exports.user = function(req, res) {
+  console.log(req.params.user);
+  redis.set('user', req.params.user);
 }
