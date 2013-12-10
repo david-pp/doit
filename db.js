@@ -1,14 +1,16 @@
-var redis = require('redis');
+var mysql      = require('mysql');
+var config     = require('./config');
 
-var redis_cli = null; 
+var connection = mysql.createConnection({
+  host     : config.mysql_host,
+  user     : config.mysql_user,
+  password : config.mysql_passwd,
+  database : config.mysql_db,
+});
 
-if (redis_cli == null) {
+connection.connect(function(err) {
+	console.log('mysql ....')
+  // connected! (unless `err` is set)
+});
 
-	redis_cli = redis.createClient();
-
-	redis_cli.on("error", function (err) {
-		console.log("error event - " + redis_cli.host + ":" + redis_cli.port + " - " + err);
-	});
-}
-
-module.exports = redis_cli;
+module.exports = connection;

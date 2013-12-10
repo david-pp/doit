@@ -13,18 +13,19 @@ User.prototype.keyname = function () {
 }
 
 User.prototype.save = function() {
-	redis.hset(this.keyname(), 'name', this.name);
-	redis.hset(this.keyname(), 'password', this.password);
+	//redis.hset(this.keyname(), 'name', this.name);
+	//redis.hset(this.keyname(), 'password', this.password);
 }
 
 User.get = function (id) {
-	redis.exists('u:' + id, function(err, res) {
+	//redis.exists('u:' + id, function(err, res) {
 		console.log(res);
-	});
+	//});
 }
 
 User.authenticate = function (name, pass, fn) {
 
+/*
 	redis.hget('u:' + name, 'password', function(err, res){
 		if (res && res == pass)
 		{
@@ -37,4 +38,5 @@ User.authenticate = function (name, pass, fn) {
 			fn(new Error('用户名或密码错误！'))
 		}
 	});
+*/
 }

@@ -4,12 +4,52 @@
 		"selected_items":
 		[
 			[
+				"re",
+				"redirect"
+			],
+			[
 				"lo",
-				"login"
+				"locals"
 			],
 			[
 				"log",
-				"logout"
+				"log"
+			],
+			[
+				"pas",
+				"pass"
+			],
+			[
+				"ti",
+				"title"
+			],
+			[
+				"r",
+				"req"
+			],
+			[
+				"res",
+				"res"
+			],
+			[
+				"t",
+				"this"
+			],
+			[
+				"pr",
+				"prototype"
+			],
+			[
+				"p",
+				"password"
+			],
+			[
+				"redi",
+				"redis_cli"
+			],
+			[
+				"user",
+				"user"
 			],
 			[
 				"con",
@@ -18,10 +58,6 @@
 			[
 				"co",
 				"console"
-			],
-			[
-				"user",
-				"username"
 			],
 			[
 				"fun",
@@ -35,6 +71,78 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "app.js",
+			"settings":
+			{
+				"buffer_size": 1948,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "user.js",
+			"settings":
+			{
+				"buffer_size": 741,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "routes/index.js",
+			"settings":
+			{
+				"buffer_size": 1090,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/nav.ejs",
+			"settings":
+			{
+				"buffer_size": 2041,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "db.js",
+			"settings":
+			{
+				"buffer_size": 279,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/index.ejs",
+			"settings":
+			{
+				"buffer_size": 2643,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/login.ejs",
+			"settings":
+			{
+				"buffer_size": 654,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/header.ejs",
+			"settings":
+			{
+				"buffer_size": 1012,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/footer.ejs",
+			"settings":
+			{
+				"buffer_size": 284,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "Packages/User/Node.sublime-build",
 	"command_palette":
@@ -76,11 +184,12 @@
 	},
 	"file_history":
 	[
-		"/C/Users/wangdawei/AppData/Roaming/Sublime Text 2/Packages/User/Node.sublime-build",
-		"/E/Code/doit/views/index.ejs",
-		"/E/Code/doit/routes/index.js",
 		"/E/Code/express/examples/auth/app.js",
+		"/E/Code/doit/views/nav.ejs",
 		"/E/Code/doit/app.js",
+		"/E/Code/doit/views/index.ejs",
+		"/C/Users/wangdawei/AppData/Roaming/Sublime Text 2/Packages/User/Node.sublime-build",
+		"/E/Code/doit/routes/index.js",
 		"/E/Code/doit/public/test1.html",
 		"/E/Code/doit/public/index.html",
 		"/E/Code/doit/bootstrap/test3.html",
@@ -106,7 +215,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
 			"<open folders>"
@@ -117,6 +226,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"use",
+			"logger",
+			"');\n",
+			"session",
+			"client",
+			"bootstra",
 			"glyphicons-halflings",
 			"glyphicons",
 			"css",
@@ -192,6 +307,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"redis_cli"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -204,6 +320,252 @@
 		{
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "app.js",
+					"settings":
+					{
+						"buffer_size": 1948,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								726,
+								726
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "user.js",
+					"settings":
+					{
+						"buffer_size": 741,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								689,
+								689
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "routes/index.js",
+					"settings":
+					{
+						"buffer_size": 1090,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								802,
+								802
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 180.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "views/nav.ejs",
+					"settings":
+					{
+						"buffer_size": 2041,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1864,
+								1864
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "db.js",
+					"settings":
+					{
+						"buffer_size": 279,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								138,
+								138
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "views/index.ejs",
+					"settings":
+					{
+						"buffer_size": 2643,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								39,
+								22
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "views/login.ejs",
+					"settings":
+					{
+						"buffer_size": 654,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								654,
+								654
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "views/header.ejs",
+					"settings":
+					{
+						"buffer_size": 1012,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								301,
+								301
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "views/footer.ejs",
+					"settings":
+					{
+						"buffer_size": 284,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								284,
+								284
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -244,7 +606,7 @@
 	},
 	"replace":
 	{
-		"height": 0.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":

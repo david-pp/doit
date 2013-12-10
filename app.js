@@ -12,15 +12,18 @@ var express = require('express')
 var redis = require('./db');
 var User = require('./user');
 var util = require('util');
+var config = require('./config');
+
+console.log(config.mysql_db);
 
 //redis.set('name', 'david david');
 
-User.get(2);
-var u = new User({id:2, name:'david', password:'123456'});
-u.save();
+//User.get(2);
+//var u = new User({id:2, name:'david', password:'123456'});
+//u.save();
 
-u = new User({id:3, name:'王大大', password:'1'});
-u.save();
+//u = new User({id:3, name:'王大大', password:'1'});
+//u.save();
 
 var app = express();
 
