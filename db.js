@@ -9,8 +9,18 @@ var connection = mysql.createConnection({
 });
 
 connection.connect(function(err) {
-	console.log('mysql ....')
-  // connected! (unless `err` is set)
+	if (err)
+	{
+		console.log(err);
+	}
+	else
+	{
+		console.log("mysql://%s:%s@%s:%s", 
+			connection.config.user,
+			connection.config.password,
+			connection.config.host, 
+			connection.config.port);
+	}
 });
 
 module.exports = connection;

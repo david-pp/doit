@@ -1,5 +1,5 @@
 var redis = require('./../db');
-var User = require('./../user')
+var User = require('../model/User')
 
 
 /*
