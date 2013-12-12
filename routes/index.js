@@ -56,3 +56,10 @@ exports.user = function(req, res) {
   console.log(req.params);
   redis.set('user', req.params.user);
 }
+
+exports.admin_user = function(req, res) {
+  res.render('admin_user', { title: "用户管理"});
+}
+
+
+
