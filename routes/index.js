@@ -62,4 +62,23 @@ exports.admin_user = function(req, res) {
 }
 
 
+exports.ajax_userlist = function(req, res) {
+  User.db.select(null, 'order by `group`, `id`', function(err, results) {
+    console.log(results);
+    res.json(results);
+  });
+}
+
+exports.ajax_setuser = function(req, res) {
+
+}
+
+exports.ajax_deluser = function(req, res) {
+}
+
+
+
+
+
+
 

@@ -85,6 +85,9 @@ app.post('/login', routes.doLogin);
 app.get('/logout', routes.logout);
 app.get('/u/:user', routes.user);
 app.get('/admin/user', routes.admin_user);
+app.get('/ajax/userlist', routes.ajax_userlist);
+app.post('/ajax/setuser', routes.ajax_setuser);
+app.get('/ajax/deluser', routes.ajax_deluser);
 
 
 http.createServer(app).listen(app.get('port'), function(){

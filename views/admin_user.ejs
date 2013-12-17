@@ -4,75 +4,15 @@
 
 <div class="container">
 
-	<div class="panel panel-default">
-	  <!-- Default panel contents -->
-	  <div class="panel-heading">
-	  <span class="glyphicon glyphicon-user"> 程序</span>
-	  <a href="#" class="right"><span class="glyphicon glyphicon-plus"></span></a>
-	  </div>
-
-	  <!-- Table -->
-	  <table class="table table-bordered table-hover table-condensed">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>工号</th>
-              <th>姓名</th>
-              <th>密码</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-          <% for (var i = 0; i < 10; i++) { %>
-            <tr>
-              <td><%= i*10000 %></td>
-              <td>Column Content</td>
-              <td><input class="form-control input-sm" type="text" placeholder=".input-sm"></td>
-              <td><textarea rows='1' placeholder='passwd'></textarea></td>
-              <td>
-              <input type="checkbox"> 管理
-              <input type="checkbox"> 计划
-              <input type="checkbox"> 版本
-              <input type="checkbox"> XXX
-              </td>
-              <td>
-              <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
-              </td>
-              <td> 
-              <a href="#"><span class="glyphicon glyphicon-minus"></span></a>
-              </td>
-            </tr>
-          <% } %>
-          </tbody>
-        </table>	
-    </div>
-
-	<div class="panel panel-default">
-	  <!-- Default panel contents -->
-	  <div class="panel-heading">策划</div>
-	  <div class="panel-body">
-	    <p>...</p>
-	  </div>
-
-	  <!-- Table -->
-	  <table class="table">
-	    ...
-	  </table>
-	</div>
-
-	<div class="panel panel-default">
-	  <!-- Default panel contents -->
-	  <div class="panel-heading">测试</div>
-	  <div class="panel-body">
-	    <p>...</p>
-	  </div>
-
-	  <!-- Table -->
-	  <table class="table">
-	    ...
-	  </table>
-	</div>
+  <div id="user_programer"></div>
+  <div id="user_qa" > </div>
+  <div id="user_designer" > </div>
 
 </div>
+
+<div id="user_edit_dlg"></div>
+
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/admin_user.js"></script>
 
 <% include footer %>
