@@ -3,5 +3,15 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/js/jquery-1.10.2.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+
+    <script>
+		<% if (path == '/') { %>
+			$('#page_main').addClass('active');
+		<% } else if (path == '/task') { %>
+			$('#page_task').addClass('active');
+		<% } else if (path == '/plan') { %>
+			$('#page_plan').addClass('active');
+		<% } %>
+	</script>
   </body>
 </html>

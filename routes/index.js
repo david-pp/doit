@@ -1,17 +1,21 @@
 var redis = require('./../db');
-var User = require('../model/User')
+var User = require('../model/User');
+var Task = require('../model/Task');
 
 
-/*
- * GET home page.
- */
-
+// 页面：主页
 exports.index = function(req, res){
   res.render('index', { title: 'DoIt !' });
   console.log(req.session);
 };
 
 
+// 页面：任务
+exports.tasklist = function(req, res){
+  res.render('tasks', { title: 'DoIt !', status: req.query.status});
+};
+
+// 页面：登录
 exports.login = function (req, res) {
   res.render('login', { title: "登录"});
 }
@@ -77,8 +81,23 @@ exports.ajax_deluser = function(req, res) {
 }
 
 
+exports.ajax_tasklist = function(req, res) {
+  console.log(req.query);
 
+  if (req.query.status) {
+    Task.db.select(null, 'where `status`='+ req.query.status, function(err, results){
+      res.json(results);
+      console.log(results);
+    });
+  } else {
+     Task.db.select(null, null, function(err, results){
+      console.log(results);
+      res.json(results);
+    });
+  }
+}
 
-
-
-
+exports.task = function(req, res) {
+  console.log(req.params.task);
+  console.log(req.params);
+}

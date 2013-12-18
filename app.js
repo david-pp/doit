@@ -74,6 +74,8 @@ app.all('*', function(req, res, next) {
     app.locals.user = null;
   }
 
+  app.locals.path = req.path;
+
   next();
 });
 
@@ -84,10 +86,13 @@ app.get('/login', routes.login);
 app.post('/login', routes.doLogin);
 app.get('/logout', routes.logout);
 app.get('/u/:user', routes.user);
+app.get('/t/:task', routes.task);
+app.get('/task', routes.tasklist);
 app.get('/admin/user', routes.admin_user);
 app.get('/ajax/userlist', routes.ajax_userlist);
 app.post('/ajax/setuser', routes.ajax_setuser);
 app.get('/ajax/deluser', routes.ajax_deluser);
+app.get('/ajax/tasklist', routes.ajax_tasklist);
 
 
 http.createServer(app).listen(app.get('port'), function(){

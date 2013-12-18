@@ -52,10 +52,10 @@ Task.db = new DBHelper({
 			{ name:'category', type:'int(10)', default: 0},                    // 任务分类
 			{ name:'priority', type:'int(10)', default: 0},                    // 任务优先级
 			{ name:'status', type:'int(10)', default: 0},                      // 任务状态
-			{ name:'designer', type:'int(10)', default: 0},                    // 负责人-策划
-			{ name:'client', type:'int(10)', default: 0},                      // 负责人-客户端程序
-			{ name:'server', type:'int(10)', default: 0},                      // 负责人-服务器程序
-			{ name:'qa', type:'int(10)', default: 0},                          // 负责人-QA    
+			{ name:'designer', type:'varchar(32)', default: 0},                // 负责人-策划
+			{ name:'client', type:'varchar(256)', default: 0},                 // 负责人-客户端程序
+			{ name:'server', type:'varchar(256)', default: 0},                 // 负责人-服务器程序
+			{ name:'qa', type:'varchar(256)', default: 0},                     // 负责人-QA    
 			{ name:'createtime', type:'int(10)', default: 0},                  // 创建时间              
 			{ name:'plan_clienttime', type:'int(10)', default: 0},             // 计划编码用时/days
 			{ name:'plan_servertime', type:'int(10)', default: 0},             // 计划编码用时/days

@@ -1,0 +1,62 @@
+<% include header %>
+
+<% include nav %>
+
+<div class="container">
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">
+	<% if (status == 'created') { %>
+		<span class="glyphicon glyphicon-folder-close"></span> 尚未开始
+	<% } else if (status == 'coding') { %>
+		<span class="glyphicon glyphicon-flash"></span> 编码中
+	<% } else if (status == 'cotest') { %>
+		<span class="glyphicon glyphicon-refresh"></span> 联调中
+	<% } else if (status == 'qatest') { %>
+		<span class="glyphicon glyphicon-fire"></span> 测试中
+	<% } else if (status == 'passed') { %>
+		<span class="glyphicon glyphicon-ok"></span> 测试通过
+	<% } else if (status == 'released') { %>
+		<span class="glyphicon glyphicon-send"></span> 已放外网
+	<% } %>
+  </div>
+  <!--<div class="panel-body"></div>-->
+  <div id="tasklist" style="width:100%"></div>
+  <!--<div class="panel-footer">Panel footer</div>-->
+</div>
+
+</div> <!-- /container -->
+
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/codebase/dhtmlxcommon.js"></script>
+<script src="/codebase/dhtmlxgrid.js"></script>
+<script src="/codebase/dhtmlxgridcell.js"></script>
+<script src="/codebase/excells/dhtmlxgrid_excell_link.js"></script>
+<script src="/js/task_grid.js"></script>
+
+<script>
+	var status = 0;
+	var taskgrid = new TaskGrid();
+	taskgrid.init('tasklist');
+
+	<% if (status == 'created') { %>
+		status = Task.status.created;
+	<% } else if (status == 'coding') { %>
+		status = Task.status.coding;
+	<% } else if (status == 'cotest') { %>
+		status = Task.status.cotest;
+	<% } else if (status == 'qatest') { %>
+		status = Task.status.qatest;
+	<% } else if (status == 'passed') { %>
+		status = Task.status.passed;
+	<% } else if (status == 'released') { %>
+		status = Task.status.released;
+	<% } %>
+
+	$.get("/ajax/tasklist?status=" + status,function(data, status){
+		taskgrid.parse(data);
+	});
+</script>
+
+<% include footer %>
