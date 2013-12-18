@@ -50,7 +50,7 @@ function test() {
 			client:names[parseInt(Math.random() * 7)], 
 			server:names[parseInt(Math.random() * 7)],
 			qa:names[parseInt(Math.random() * 7)],
-			createtime:randomDate(),
+			createtime:(new Date()).getTime()/1000,
 			plan_servertime:randomDate(),
 			plan_cotesttime:randomDate(),
 			plan_qatesttime:randomDate()

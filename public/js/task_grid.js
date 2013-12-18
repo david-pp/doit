@@ -92,6 +92,26 @@ Task.time2text = function(seconds) {
 	return (date.getFullYear() + '-' + (date.getMonth() + 1) + "-" + date.getDate()); 
 }
 
+Task.parseGanttData = function(serverdata) {
+	var tasks = new Object();
+	tasks.data = new Array();
+
+	for (var i = 0; i < serverdata.length; i++) {
+		tasks.data[i] = new Object();
+		tasks.data[i].id = serverdata[i].id;
+		tasks.data[i].text = serverdata[i].desc;
+		tasks.data[i].start_date = Task.time2text(serverdata[i].createtime);
+		tasks.data[i].duration = parseInt((serverdata[i].plan_qatesttime - serverdata[i].createtime + 24*3600)/(24*3600));
+		tasks.data[i].progress = 0.0;
+		tasks.data[i].open = true;
+	}
+
+	console.log(tasks);
+
+	return tasks;
+}
+
+
 function TaskGrid() {
 	this.grid = null;
 	this.data = null;
@@ -100,7 +120,7 @@ function TaskGrid() {
 TaskGrid.prototype.init = function(selector) {
 	this.grid = new dhtmlXGridObject(selector);
 	this.grid.setImagePath("/codebase/imgs/");
-	this.grid.setHeader("单号,描述,任务分类,优先级,状态,策划,服务器,客户端,QA,提交时间,联调时间,测试时间,版本时间");
+	this.grid.setHeader("单号,描述,任务分类,优先级,状态,策划,服务器,客户端,QA,创建时间,提交时间,联调时间,测试时间");
 	this.grid.setInitWidths("70,300");
 	this.grid.setColAlign("center,left,center,center,center,center,center,center,center,center,center,center,center");
 	this.grid.setColTypes("dyn,link,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro");
