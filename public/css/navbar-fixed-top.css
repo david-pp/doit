@@ -7,6 +7,14 @@ a.right {
   float: right;
 }
 
+.floatright {
+  float: right;
+}
+
+button.right {
+  float: right;
+}
+
 .form-signin {
   max-width: 330px;
   padding: 15px;

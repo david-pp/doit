@@ -3,126 +3,14 @@
 <% include nav %>
 
 <div class="container">
-
-<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">
-	<% if (status == 'created') { %>
-		<span class="glyphicon glyphicon-folder-close"></span> 尚未开始
-	<% } else if (status == 'coding') { %>
-		<span class="glyphicon glyphicon-flash"></span> 编码中
-	<% } else if (status == 'cotest') { %>
-		<span class="glyphicon glyphicon-refresh"></span> 联调中
-	<% } else if (status == 'qatest') { %>
-		<span class="glyphicon glyphicon-fire"></span> 测试中
-	<% } else if (status == 'passed') { %>
-		<span class="glyphicon glyphicon-ok"></span> 测试通过
-	<% } else if (status == 'released') { %>
-		<span class="glyphicon glyphicon-send"></span> 已放外网
-	<% } %>
-  </div>
-  <!--<div class="panel-body"></div>-->
-  <div id="tasklist" style="width:100%"></div>
-  <!--<div class="panel-footer">Panel footer</div>-->
-</div>
-
-<div id="gantt_here" style='width:100%; height:1000px;'></div>
-
+	<div id="taskviewer"> </div>
 </div> <!-- /container -->
 
-<script src="/js/jquery-1.10.2.min.js"></script>
-<script src="/codebase/dhtmlxcommon.js"></script>
-<script src="/codebase/dhtmlxgrid.js"></script>
-<script src="/codebase/dhtmlxgridcell.js"></script>
-<script src="/codebase/excells/dhtmlxgrid_excell_link.js"></script>
-<script src="/codebase/dhtmlxgantt.js"></script> 
-<script src="/codebase/locale/locale_cn.js" charset="utf-8"></script>
-<script src="/codebase/ext/dhtmlxgantt_tooltip.js"></script>
-<script src="/js/task_grid.js"></script>
-
+<% include task_view %>
 
 <script>
-	var status = 0;
-	var taskgrid = new TaskGrid();
-	taskgrid.init('tasklist');
-
-	<% if (status == 'created') { %>
-		status = Task.status.created;
-	<% } else if (status == 'coding') { %>
-		status = Task.status.coding;
-	<% } else if (status == 'cotest') { %>
-		status = Task.status.cotest;
-	<% } else if (status == 'qatest') { %>
-		status = Task.status.qatest;
-	<% } else if (status == 'passed') { %>
-		status = Task.status.passed;
-	<% } else if (status == 'released') { %>
-		status = Task.status.released;
-	<% } %>
-
-	$.get("/ajax/tasklist?status=" + status,function(data, status){
-		taskgrid.parse(data);
-
-		gantt.config.xml_date="%Y-%m-%j";
-
-		// setting scale
-		gantt.config.date_scale="%d/%n";
-		gantt.config.scale_height = 90;
-
-		var weekScaleTemplate = function(date){
-			var dateToStr = gantt.date.date_to_str("%d/%n");
-			var endDate = gantt.date.add(gantt.date.add(date, 1, "week"), -1, "day");
-			return dateToStr(date) + " - " + dateToStr(endDate);
-		};
-
-		gantt.config.subscales = [
-			{unit:"week", step:1, template:weekScaleTemplate},
-			{unit:"day", step:1, date:"%D" }
-		];
-
-		// setting weekend & today
-		gantt.templates.scale_cell_class = function(date){
-			var today = new Date();
-			if(today.getFullYear() == date.getFullYear() && today.getMonth() == date.getMonth() && today.getDate() == date.getDate()) {
-				return "today";
-			}
-
-            if(date.getDay()==0||date.getDay()==6){
-                return "weekend";
-            }
-        };
-        gantt.templates.task_cell_class = function(item,date){
-        	var today = new Date();
-			if(today.getFullYear() == date.getFullYear() && today.getMonth() == date.getMonth() && today.getDate() == date.getDate()) {
-				return "today";
-			}
-
-            if(date.getDay()==0||date.getDay()==6){
-                return "weekend"
-            }
-        };
-
-        // columns
-        gantt.config.columns = [
-        	{name : 'id', label:"#", width:20, template: function(item) { return item.id; }},
-        	{name:"text", label:"Desc", tree:true, width:'*' }
-         ];
-
-
-        // tooltips
-        gantt.templates.tooltip_text = function(start,end,task){
-	    return "<b>Task:</b> "+task.text+"<br/><b>Start date:</b> " + 
-	    gantt.templates.tooltip_date_format(start)+ 
-	    "<br/><b>End date:</b> "+gantt.templates.tooltip_date_format(end);
-	};
-
-
-
-        gantt.config.readonly = true;
-
-		gantt.init("gantt_here");  
-		gantt.parse(Task.parseGanttData(data));
-	});
+	var tv = new TaskViewer(<%= status %>);
+	tv.init('#taskviewer');
 </script>
 
 <% include footer %>

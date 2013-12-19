@@ -12,8 +12,13 @@ exports.index = function(req, res){
 
 // 页面：任务
 exports.tasklist = function(req, res){
-  res.render('tasks', { title: 'DoIt !', status: req.query.status});
+  res.render('tasks', { title: 'DoIt !', status : req.query.status});
 };
+
+// 页面：Gantt图
+exports.gantt = function(req, res){
+  res.render('gantt', { title: 'DoIt !', status: req.query.status});
+}
 
 // 页面：登录
 exports.login = function (req, res) {

@@ -4,67 +4,22 @@
 
 <div class="container">
 
-<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">
-		<span class="glyphicon glyphicon-flash"></span> 编码中
-  </div>
   <div id="tasks_coding" style="width:100%"></div>
-</div>
-
-<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">
-		<span class="glyphicon glyphicon-refresh"></span> 联调中
-  </div>
   <div id="tasks_cotest" style="width:100%"></div>
-</div>
-
-<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">
-		<span class="glyphicon glyphicon-fire"></span> 测试中
-  </div>
   <div id="tasks_qatest" style="width:100%"></div>
-</div>
-
 
 </div> <!-- /container -->
 
-<script src="/js/jquery-1.10.2.min.js"></script>
-<script src="/codebase/dhtmlxcommon.js"></script>
-<script src="/codebase/dhtmlxgrid.js"></script>
-<script src="/codebase/dhtmlxgridcell.js"></script>
-<script  src="/codebase/excells/dhtmlxgrid_excell_link.js"></script>
-<script src="/js/task_grid.js"></script>
+<% include task_view %>
 
 <script>
-	var coding = new TaskGrid();
-	var cotest = new TaskGrid();
-	var qatest = new TaskGrid();
+	var tv_coding = new TaskViewer(2);
+	var tv_cotest = new TaskViewer(3);
+	var tv_qatest = new TaskViewer(4);
 
-	$.get("/ajax/tasklist?status=" + Task.status.coding,function(data, status){
-		if (data.length > 0) {
-			coding.init('tasks_coding');
-			coding.parse(data);
-		}
-	});
-
-	$.get("/ajax/tasklist?status=" + Task.status.cotest,function(data, status){
-		if (data.length > 0) {
-			cotest.init('tasks_cotest');
-			cotest.parse(data);
-		}
-	});
-
-	$.get("/ajax/tasklist?status=" + Task.status.qatest,function(data, status){
-		if (data.length > 0) {
-			qatest.init('tasks_qatest');
-			qatest.parse(data);
-		}
-	});
-
+	tv_coding.init('#tasks_coding');
+	tv_cotest.init('#tasks_cotest');
+	tv_qatest.init('#tasks_qatest');
 </script>
-
 
 <% include footer %>

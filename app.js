@@ -88,6 +88,7 @@ app.get('/logout', routes.logout);
 app.get('/u/:user', routes.user);
 app.get('/t/:task', routes.task);
 app.get('/task', routes.tasklist);
+app.get('/gantt', routes.gantt);
 app.get('/admin/user', routes.admin_user);
 app.get('/ajax/userlist', routes.ajax_userlist);
 app.post('/ajax/setuser', routes.ajax_setuser);
