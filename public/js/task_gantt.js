@@ -58,16 +58,46 @@ TaskGantt.prototype.init = function(selector) {
 	gantt.config.task_height = 25;
     gantt.config.row_height = 30;
 
+    // readonly
     gantt.config.readonly = true;
 
+    // init
 	gantt.init(selector);
 
+	// task text
+	var _status = this.status;
+	gantt.templates.task_text=function(start,end,task){
+		return Task.ganttTaskText(task, _status);
+	}
+
+	// task color
+	gantt.templates.task_class=function(start,end,task){
+
+		var now = new Date();
+		var date = new Date();
+		date.setTime(task.end_time * 1000);
+
+		// today
+		if (now.getFullYear() == date.getFullYear() 
+			&& now.getMonth() == date.getMonth() 
+			&& now.getDate() == date.getDate())
+		{
+			return "task_danger";
+		} 
+		else 
+		{
+			// timeout
+			if (now.getTime() > date.getTime())
+				return "task_warning";
+		} 
+	};
+
 	$.get("/ajax/tasklist?status=" + this.status, function(data, retstatus) {
-		gantt.parse(TaskGantt.parse(data));
+		gantt.parse(TaskGantt.parse(data, _status));
 	});
 }
 
-TaskGantt.parse = function(serverdata) {
+TaskGantt.parse = function(serverdata, status) {
   var tasks = new Object();
   tasks.data = new Array();
 
@@ -75,8 +105,10 @@ TaskGantt.parse = function(serverdata) {
     tasks.data[i] = new Object();
     tasks.data[i].id = serverdata[i].id;
     tasks.data[i].text = serverdata[i].desc;
-    tasks.data[i].start_date = Task.time2text(serverdata[i].createtime);
-    tasks.data[i].duration = parseInt((serverdata[i].plan_qatesttime - serverdata[i].createtime + 24*3600)/(24*3600));
+    tasks.data[i].start_date = Task.ganttStartDate(serverdata[i], status);
+    tasks.data[i].end_date = Task.ganttEndDate(serverdata[i], status);
+    tasks.data[i].end_time = Task.ganttEndTime(serverdata[i], status);
+    tasks.data[i].duration = Task.ganttDuration(serverdata[i], status);
     tasks.data[i].progress = 0.0;
     tasks.data[i].open = true;
     tasks.data[i].category =  Task.category2text(serverdata[i].category);

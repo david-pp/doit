@@ -31,6 +31,14 @@ Task.status = {
   released: 6,           // 发布/外网版本测试通过
 };
 
+// 任务颜色
+Task.color = {
+  danger  : '#ebccd1',
+  warning : '#faebcc',
+  info    : '#bce8f1',
+  success : '#d6e9c6',
+};
+
 Task.category2text = function(category) {
   switch (category) {
     case Task.category.unkown:
@@ -91,28 +99,55 @@ Task.time2text = function(seconds) {
   return (date.getFullYear() + '-' + (date.getMonth() + 1) + "-" + date.getDate()); 
 }
 
-Task.parseGanttData = function(serverdata) {
-  var tasks = new Object();
-  tasks.data = new Array();
+Task.ganttTaskText = function(task, status) {
 
-  for (var i = 0; i < serverdata.length; i++) {
-    tasks.data[i] = new Object();
-    tasks.data[i].id = serverdata[i].id;
-    tasks.data[i].text = serverdata[i].desc;
-    tasks.data[i].start_date = Task.time2text(serverdata[i].createtime);
-    tasks.data[i].duration = parseInt((serverdata[i].plan_qatesttime - serverdata[i].createtime + 24*3600)/(24*3600));
-    tasks.data[i].progress = 0.0;
-    tasks.data[i].open = true;
-    tasks.data[i].category =  Task.category2text(serverdata[i].category);
-    tasks.data[i].status = Task.status2text(serverdata[i].status);
-    tasks.data[i].priority = Task.priority2text(serverdata[i].priority);
-    tasks.data[i].designer = serverdata[i].designer;
-    tasks.data[i].server = serverdata[i].server;
-    tasks.data[i].client = serverdata[i].client;
-    tasks.data[i].qa = serverdata[i].qa;
-  }
+    if (Task.status.coding == status)
+    {
+      return task.server + ' | ' + task.client;
+    }
+    else if (Task.status.cotest == status)
+    {
+      return task.designer + ' | ' + task.server + ' | ' + task.client;
+    }
+    else if (Task.status.qatest == status)
+    {
+      return task.qa + ' | ' + task.designer + ' | ' + task.server + ' | ' + task.client;
+    }
 
-  console.log(tasks);
+    return '';
+}
 
-  return tasks;
+Task.ganttStartDate = function(task, status) {
+
+  return Task.time2text(task.createtime);
+}
+
+Task.ganttEndTime = function(task, status) {
+  
+  if (Task.status.coding == status)
+    {
+      return task.plan_servertime;
+    }
+    else if (Task.status.cotest == status)
+    {
+      return task.plan_cotesttime;
+    }
+    else if (Task.status.qatest == status)
+    {
+      return task.plan_qatesttime;
+    }
+    else
+    {
+      return task.plan_qatesttime;
+    }
+}
+
+Task.ganttEndDate = function(task, status) {
+
+  return Task.time2text(Task.ganttEndTime(task, status));
+}
+
+Task.ganttDuration = function(task, status) {
+
+  return parseInt((Task.ganttEndTime(task, status) - task.createtime + 24*3600)/(24*3600));
 }

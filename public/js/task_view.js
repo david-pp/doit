@@ -3,7 +3,7 @@
 function TaskViewer(status) {
 	this.status = status;
 	this.selector = null;
-	this.taskgrid = new TaskGrid();
+	this.taskgrid = new TaskGrid(status);
 }
 
 TaskViewer.prototype.statusIcon = function() {

@@ -1,10 +1,11 @@
 
 
 
-function TaskGrid() {
+function TaskGrid(status) {
 	this.grid = null;
 	this.data = null;
 	this.serverdata = null;
+	this.status = status;
 }
 
 TaskGrid.prototype.init = function(selector) {
@@ -19,8 +20,7 @@ TaskGrid.prototype.init = function(selector) {
 	this.grid.enableAutoHeight(true);
 	this.grid.setStyle("text-align:center;");
 	this.grid.init();
-	this.grid.setSkin("dhx_terrace");
-	
+	this.grid.setSkin("dhx_terrace");	
 }
 
 TaskGrid.prototype.parse = function(serverdata) {
@@ -34,7 +34,7 @@ TaskGrid.prototype.parse = function(serverdata) {
 
 		data.rows[i].id = serverdata[i].id;                    
 		data.rows[i].data[0] = serverdata[i].id;
-		data.rows[i].data[1] = serverdata[i].desc;
+		data.rows[i].data[1] = serverdata[i].desc + '^/t/' + serverdata[i].id;
 		data.rows[i].data[2] = Task.category2text(serverdata[i].category);
 		data.rows[i].data[3] = Task.priority2text(serverdata[i].priority);
 		data.rows[i].data[4] = Task.status2text(serverdata[i].status);
@@ -51,6 +51,45 @@ TaskGrid.prototype.parse = function(serverdata) {
 	this.data = data;
 
 	this.grid.parse(this.data,"json");	
+
+	// set bgcolor
+	var now = new Date();
+	for (var i = 0; i < serverdata.length; i++) {
+
+		var need = false;
+		var date = new Date();
+		if (Task.status.coding == this.status)
+		{
+			need = true;
+			date.setTime(serverdata[i].plan_servertime*1000);
+		}
+		else if (Task.status.cotest == this.status)
+		{
+			need = true;
+			date.setTime(serverdata[i].plan_cotesttime*1000);
+		}
+		else if (Task.status.qatest == this.status)
+		{
+			need = true;
+			date.setTime(serverdata[i].plan_qatesttime*1000);
+		}
+
+		if (need) 
+		{
+			// today
+			if (now.getFullYear() == date.getFullYear() 
+				&& now.getMonth() == date.getMonth() 
+				&& now.getDate() == date.getDate())
+			{
+				this.grid.setRowColor(serverdata[i].id, Task.color.danger);
+			} else {
+
+				// timeout
+				if (now.getTime() > date.getTime())
+					this.grid.setRowColor(serverdata[i].id, Task.color.warning);
+			} 
+		}
+	}
 }
 
 TaskGrid.prototype.reset = function(selector) {

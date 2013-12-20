@@ -89,13 +89,27 @@ exports.ajax_tasklist = function(req, res) {
   console.log(req.query);
 
   if (req.query.status) {
-    Task.db.select(null, 'where `status`='+ req.query.status, function(err, results){
+
+    var ordertext = 'id desc';
+    switch (parseInt(req.query.status)) {
+      case Task.status.coding:
+        ordertext = 'plan_servertime';
+        break;
+      case Task.status.cotest:
+        ordertext = 'plan_cotesttime';
+        break;
+      case Task.status.qatest:
+        ordertext = 'plan_qatesttime';
+        break;
+    }
+
+    Task.db.select(null, 'where `status`='+ req.query.status + ' order by ' + ordertext, function(err, results){
       res.json(results);
-      console.log(results);
+      //console.log(results);
     });
   } else {
      Task.db.select(null, null, function(err, results){
-      console.log(results);
+      //console.log(results);
       res.json(results);
     });
   }

@@ -23,6 +23,18 @@
 	      background: yellow;
 	    }
 
+	    .task_danger {
+			border:2px solid #FF6666;
+			color: #FF6666;
+			background: #FF6666;
+		}
+
+		.task_warning {
+			border:2px solid #CC9900;
+			color:#CC9900;
+			background:#CC9900;
+		}
+
 	</style>
 </head>
 <body>
@@ -33,7 +45,7 @@
 	<script src="/js/task_gantt.js"></script>
 
 	<script type="text/javascript">
-		var tg = new TaskGantt(<%= status %>);
+		var tg = new TaskGantt(parseInt(<%= status %>));
 		tg.init('gantt_here');
 	</script>
 </body>
