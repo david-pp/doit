@@ -11,15 +11,15 @@ TaskGrid.prototype.init = function(selector) {
 	this.grid = new dhtmlXGridObject(selector);
 	this.grid.setImagePath("/codebase/imgs/");
 	this.grid.setHeader("单号,描述,任务分类,优先级,状态,策划,服务器,客户端,QA,创建时间,提交时间,联调时间,测试时间");
-	this.grid.setInitWidths("70,300");
+	this.grid.setInitWidths("80,260");
 	this.grid.setColAlign("center,left,center,center,center,center,center,center,center,center,center,center,center");
-	this.grid.setColTypes("dyn,link,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro");
+	this.grid.setColTypes("ro,link,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro");
 	this.grid.setColSorting("int,str,str,str,str,str,str,str,str,date,date,date,date");
 	this.grid.enableAutoWidth(true);
 	this.grid.enableAutoHeight(true);
-	this.grid.setStyle("text-align:center;font-weight:bold;");
+	this.grid.setStyle("text-align:center;");
 	this.grid.init();
-	this.grid.setSkin("dhx_skyblue");
+	this.grid.setSkin("dhx_terrace");
 	
 }
 

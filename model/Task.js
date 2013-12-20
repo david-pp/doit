@@ -63,3 +63,24 @@ Task.db = new DBHelper({
 			{ name:'plan_qatesttime', type:'int(10)', default: 0},             // 计划测试用时/days
 		]
 	});
+
+
+Task.status2text = function(status) {
+  switch(status) {
+    case 0:
+      return '未知';
+    case 1:
+      return '尚未开始';
+    case 2:
+      return '开发编码';
+    case 3:
+      return '开发联调';
+    case 4:
+      return '开发测试';
+    case 5: 
+      return '测试通过';
+    case 6:
+      return '已经发布';
+  }
+  return  '未知';
+}

@@ -58,6 +58,8 @@ TaskGantt.prototype.init = function(selector) {
 	gantt.config.task_height = 25;
     gantt.config.row_height = 30;
 
+    gantt.config.readonly = true;
+
 	gantt.init(selector);
 
 	$.get("/ajax/tasklist?status=" + this.status, function(data, retstatus) {
