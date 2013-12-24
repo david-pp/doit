@@ -89,11 +89,20 @@ app.get('/u/:user', routes.user);
 app.get('/t/:task', routes.task);
 app.get('/task', routes.tasklist);
 app.get('/gantt', routes.gantt);
+app.get('/plan', routes.plan);
+app.get('/planview', routes.planview);
 app.get('/admin/user', routes.admin_user);
 app.get('/ajax/userlist', routes.ajax_userlist);
 app.post('/ajax/setuser', routes.ajax_setuser);
 app.get('/ajax/deluser', routes.ajax_deluser);
 app.get('/ajax/tasklist', routes.ajax_tasklist);
+
+app.get('/ajax/plan_create', routes.ajax_plan_create);
+app.get('/ajax/plan_delete', routes.ajax_plan_delete);
+app.get('/ajax/plan_add', routes.ajax_plan_add);
+app.get('/ajax/plan_remove', routes.ajax_plan_remove);
+app.get('/ajax/plan_list', routes.ajax_plan_list);
+app.get('/ajax/plan_tasks', routes.ajax_plan_tasks);
 
 
 http.createServer(app).listen(app.get('port'), function(){
