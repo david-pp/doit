@@ -24,6 +24,8 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
+    <link href="/codebase/dhtmlxgrid.css" rel="stylesheet">
+    <link href="/codebase/skins/dhtmlxgrid_dhx_terrace.css" rel="stylesheet">
     <link href="/codebase/dhtmlxlayout.css" rel="stylesheet">
     <link href="/codebase/skins/dhtmlxlayout_dhx_terrace.css" rel="stylesheet">
 
@@ -40,35 +42,20 @@
 
   <body>
 
-    <!--<script src="/js/jquery-1.10.2.min.js"></script>-->
+    <script src="/js/jquery-1.10.2.min.js"></script>
     <script src="/codebase/dhtmlxcommon.js"></script>
     <script src="/codebase/dhtmlxcontainer.js"></script>
     <script src="/codebase/dhtmlxlayout.js"></script>
     <script src="/codebase/dhtmlxgrid.js"></script>
     <script src="/codebase/dhtmlxgridcell.js"></script>
+    <script src="/codebase/ext/dhtmlxgrid_drag.js"></script>
     <script src="/codebase/excells/dhtmlxgrid_excell_link.js"></script>
+    <script src="/js/task.js"></script>
+    <script src="/js/task_plan.js"></script>
 
     <script>
-        var layout = new dhtmlXLayoutObject(document.body, "3L");
-        layout.cells("a").setText("版本计划");
-        layout.cells("b").setText("单子");
-        layout.cells("c").setText("版本内容");
-        layout.cells("a").setWidth(250);
-        layout.cells("b").setHeight(250);
-        layout.setCollapsedText("a", "版本计划");
-
-        grid = layout.cells("a").attachGrid();
-        grid.setImagePath("/codebase/imgs/");
-        grid.setHeader("日期,类型,描述");
-        grid.setColAlign("center,center,left");
-        grid.setColTypes("ro,ro,ro");
-        grid.setColSorting("date,str,str");
-        grid.setStyle("text-align:center;");
-        grid.enableAutoWidth(true);
-        grid.enableAutoHeight(true);
-        grid.init();
-        grid.setSkin("dhx_terrace"); 
-
+        var plan = new TaskPlan();
+        plan.init();
     </script>
   </body>
 </html>
