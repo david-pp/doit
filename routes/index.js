@@ -18,8 +18,7 @@ exports.tasklist = function(req, res){
 
 // 页面：任务详情
 exports.task = function(req, res) {
-  console.log(req.params.task);
-  console.log(req.params);
+  res.render('task', { title: 'task:' + req.params.task});
 }
 
 // 页面：Gantt图
@@ -33,8 +32,8 @@ exports.login = function (req, res) {
 }
 
 // 页面：版本计划
-exports.plan = function (req, res) {
-  res.render('plan', { title: "版本计划"});
+exports.planpage = function (req, res) {
+  res.render('plans', { title: "版本计划"});
 }
 
 // 页面：版本计划
@@ -42,6 +41,10 @@ exports.planview = function (req, res) {
   res.render('planview', { title: "版本计划"});
 }
 
+// 页面：版本详情
+exports.plan = function (req, res) {
+  res.render('plan', { title: '版本计划:' + req.params.plan});
+}
 
 exports.doLogin = function(req, res){
 	console.log(req.body);

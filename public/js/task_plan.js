@@ -25,7 +25,7 @@ TaskPlan.prototype.initPlan = function() {
 	this.grid_plan.setImagePath("/codebase/imgs/");
 	this.grid_plan.setHeader("日期,类型,描述");
 	this.grid_plan.setColAlign("center,center,left");
-	this.grid_plan.setColTypes("ro,ro,ro");
+	this.grid_plan.setColTypes("ro,ro,link");
 	this.grid_plan.setColSorting("date,str,str");
 	this.grid_plan.setStyle("text-align:center;");
 	this.grid_plan.enableAutoWidth(true);
@@ -52,7 +52,7 @@ TaskPlan.prototype.initPlan = function() {
 			data.rows[i].id = serverdata[i].id;                    
 			data.rows[i].data[0] = Task.time2text(serverdata[i].time_make);
 			data.rows[i].data[1] = serverdata[i].category;
-			data.rows[i].data[2] = serverdata[i].desc;
+			data.rows[i].data[2] = serverdata[i].desc + '^/p/' + serverdata[i].id;
 		}
 
 		_grid_plan.parse(data,"json");	
