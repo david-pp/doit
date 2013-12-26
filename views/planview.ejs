@@ -10,10 +10,9 @@
     <title><%= title %></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.css" rel="stylesheet">
+    <!--<link href="/css/bootstrap.css" rel="stylesheet">-->
 
     <!-- Custom styles for this template -->
-    <link href="/css/navbar-fixed-top.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -26,21 +25,52 @@
 
     <link href="/codebase/dhtmlxgrid.css" rel="stylesheet">
     <link href="/codebase/skins/dhtmlxgrid_dhx_terrace.css" rel="stylesheet">
+    <link href="/codebase/skins/dhtmlxgrid_dhx_skyblue.css" rel="stylesheet">
+    <link href="/codebase/skins/dhtmlxgrid_dhx_web.css" rel="stylesheet">
+
     <link href="/codebase/dhtmlxlayout.css" rel="stylesheet">
     <link href="/codebase/skins/dhtmlxlayout_dhx_terrace.css" rel="stylesheet">
 
-    <style>
-        html, body {
-            width: 100%;
-            height: 100%;
-            margin: 0px;
-            padding: 0px;
-            overflow: hidden;
-        }
-    </style>
-  </head>
 
-  <body>
+    <style>
+        html,body{
+            width:100%;
+            height:100%;
+            margin:0px;
+            padding:0px;
+            overflow:hidden;
+        }
+
+        a {
+          background: transparent;
+        }
+
+        a:focus {
+          outline: thin dotted;
+        }
+
+        a:active,
+        a:hover {
+          outline: 0;
+        }
+
+        a {
+          color: #428bca;
+          text-decoration: none;
+        }
+
+        a:hover,
+        a:focus {
+          color: #2a6496;
+          text-decoration: underline;
+        }
+
+        a:focus {
+          outline: thin dotted #333;
+          outline: 5px auto -webkit-focus-ring-color;
+        }
+         
+    </style>
 
     <script src="/js/jquery-1.10.2.min.js"></script>
     <script src="/codebase/dhtmlxcommon.js"></script>
@@ -49,10 +79,15 @@
     <script src="/codebase/dhtmlxgrid.js"></script>
     <script src="/codebase/dhtmlxgridcell.js"></script>
     <script src="/codebase/ext/dhtmlxgrid_drag.js"></script>
+    <script src="/codebase/ext/dhtmlxgrid_srnd.js"></script>
+    <script src="/codebase/ext/dhtmlxgrid_filter.js"></script>
     <script src="/codebase/excells/dhtmlxgrid_excell_link.js"></script>
     <script src="/js/task.js"></script>
     <script src="/js/task_plan.js"></script>
 
+  </head>
+
+  <body>
     <script>
         var plan = new TaskPlan();
         plan.init();

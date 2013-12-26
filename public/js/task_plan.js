@@ -12,11 +12,14 @@ TaskPlan.prototype.init = function() {
 	this.layout.cells("b").setText("单子");
 	this.layout.cells("c").setText("版本内容");
 	this.layout.cells("a").setWidth(250);
-	this.layout.cells("b").setHeight(250);
+	//this.layout.cells("b").setHeight(250);
 	//this.layout.setCollapsedText("a", "版本计划");
 
+	var statusBar = this.layout.cells("a").attachStatusBar();
+    statusBar.setText("Simple Status Bar");
+
 	this.initPlan();
-	this.initTasks(Task.status.passed);
+	this.initTasks();
 	//this.initPlanTasks(1);
 }
 
@@ -61,16 +64,20 @@ TaskPlan.prototype.initPlan = function() {
 	});
 }
 
-TaskPlan.prototype.initTasks = function(status) {
+TaskPlan.prototype.initTasks = function() {
 	this.grid_tasks = this.layout.cells("b").attachGrid();	
 	this.grid_tasks.setImagePath("/codebase/imgs/");
 	this.grid_tasks.setHeader("单号,描述,任务分类,优先级,状态,策划,服务器,客户端,QA,创建时间,提交时间,联调时间,测试时间");
+	this.grid_tasks.attachHeader("#text_filter,#text_filter,#select_filter,#select_filter,#select_filter,#select_filter,#select_filter,#select_filter,#select_filter");
+
 	this.grid_tasks.setInitWidths("80,260");
 	this.grid_tasks.setColAlign("center,left,center,center,center,center,center,center,center,center,center,center,center");
 	this.grid_tasks.setColTypes("ro,link,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro");
 	this.grid_tasks.setColSorting("int,str,str,str,str,str,str,str,str,date,date,date,date");
 	this.grid_tasks.setStyle("text-align:center;");
 	this.grid_tasks.enableAutoWidth(true);
+	this.grid_tasks.enableSmartRendering(true);
+
 	//this.grid_tasks.enableAutoHeight(true);
 
 	var _grid_tasks = this.grid_tasks;
@@ -84,10 +91,11 @@ TaskPlan.prototype.initTasks = function(status) {
 	this.grid_tasks.enableDragAndDrop(true);
 	this.grid_tasks.init();
 	this.grid_tasks.setSkin("dhx_terrace");
+	//this.grid_tasks.setSkin("dhx_web");
 
 	
 
-	$.get("/ajax/tasklist?status=" + status, function(serverdata, retstatus) {
+	$.get("ajax/tasklist?type=forplan", function(serverdata, retstatus) {
 		var data = new Object();
 		data.rows = new Array();
 
@@ -125,7 +133,7 @@ TaskPlan.prototype.initPlanTasks = function(vid) {
 	this.grid_plan_tasks.setColSorting("int,str,str,str,str,str,str,str,str,date,date,date,date");
 	this.grid_plan_tasks.setStyle("text-align:center;");
 	this.grid_plan_tasks.enableAutoWidth(true);
-	this.grid_plan_tasks.enableAutoHeight(true);
+	//this.grid_plan_tasks.enableAutoHeight(true);
 	this.grid_plan_tasks.enableDragAndDrop(true);
 	this.grid_plan_tasks.vid = vid;
 
