@@ -1,0 +1,6 @@
+﻿<?xml version='1.0' ?>
+<menu id="0">
+		<item text="新加版本" img="new.gif"  id="new"/>	
+		<item text="编辑版本" img="page_setup.gif"  id="edit"/>	
+		<item text="删除版本" img="close_dis.gif"  id="delete"/>	
+</menu>

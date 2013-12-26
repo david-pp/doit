@@ -47,6 +47,32 @@ function TaskPlan () {
 	this.grid_tasks = null;
 }
 
+TaskPlan.prototype.refreshTaskTitle = function () {
+	this.layout.setText("b", "未发布的单子 | 总数:" + this.grid_tasks.getRowsNum());
+}
+
+TaskPlan.prototype.refreshPlanTasksTitle = function(add) {
+	this.layout.setText("c", "版本内容 | 总数:" + (this.grid_plan_tasks.getRowsNum() + add));
+}
+
+TaskPlan.prototype.deleteVersion = function(vid) {
+	this.grid_plan.deleteRow(vid);
+
+	$.get("/ajax/plan_delete?id=" + vid, function(serverdata, retstatus) {
+	});
+
+	$.get("/ajax/plan_remove?vid=" + vid, function(serverdata, retstatus) {
+	});
+}
+
+TaskPlan.prototype.addVersion = function(vid) {
+	alert('add');
+}
+
+TaskPlan.prototype.editVersion = function(vid) {
+	alert('edit');
+}
+
 TaskPlan.prototype.init = function() {
 	this.layout = new dhtmlXLayoutObject(document.body, "3L");
 	this.layout.cells("a").setText("版本计划");
@@ -67,6 +93,7 @@ TaskPlan.prototype.init = function() {
 }
 
 TaskPlan.prototype.initPlan = function() {
+
 	this.grid_plan = this.layout.cells("a").attachGrid();	
 	this.grid_plan.setImagePath("/codebase/imgs/");
 	this.grid_plan.setHeader("状态,日期,类型,描述");
@@ -79,6 +106,32 @@ TaskPlan.prototype.initPlan = function() {
 
 	var _grid_plan = this.grid_plan;
 	var _plan = this;
+
+	// context menu
+	this.menu = new dhtmlXMenuObject();
+	this.menu.setIconsPath("/codebase/imgs/");
+	this.menu.renderAsContextMenu();
+	this.menu.attachEvent("onClick", function(menuitemId, type) {
+		var data = _grid_plan.contextID.split("_");
+    	//rowInd_colInd;
+    	var rId = data[0];
+    	var cInd = data[1];
+
+    	if (menuitemId == 'delete') {
+    		_plan.deleteVersion(rId);
+    	}
+    	else if (menuitemId == 'new') {
+    		_plan.addVersion(rId);
+    	}
+    	else if (menuitemId == 'edit') {
+    		_plan.editVersion(rId);
+    	}
+
+		return true;
+	});
+
+	this.menu.loadXML("/plan_context.xml");
+	this.grid_plan.enableContextMenu(this.menu);
 
 	this.grid_plan.attachEvent("onRowSelect", function(id) {
 		_plan.initPlanTasks(id);
@@ -124,11 +177,14 @@ TaskPlan.prototype.initTasks = function() {
 
 	//this.grid_tasks.enableAutoHeight(true);
 
+	var _plan = this;
 	var _grid_tasks = this.grid_tasks;
+
 	this.grid_tasks.attachEvent('onDrag', function(sid, tid, sObj) {
 		$.get('/ajax/plan_remove?vid='+ sObj.vid +'&tid=' + sid, function(serverdata, retstatus){
 		});
 
+		_plan.refreshPlanTasksTitle(-1);
 		return true;
 	});
 
@@ -138,7 +194,6 @@ TaskPlan.prototype.initTasks = function() {
 	//this.grid_tasks.setSkin("dhx_web");
 
 	
-
 	$.get("ajax/tasklist?type=forplan", function(serverdata, retstatus) {
 		var data = new Object();
 		data.rows = new Array();
@@ -164,6 +219,8 @@ TaskPlan.prototype.initTasks = function() {
 			}
 
 		_grid_tasks.parse(data,"json");	
+
+		_plan.refreshTaskTitle();
 	});
 }
 
@@ -181,6 +238,7 @@ TaskPlan.prototype.initPlanTasks = function(vid) {
 	this.grid_plan_tasks.enableDragAndDrop(true);
 	this.grid_plan_tasks.vid = vid;
 
+	var _plan = this;
 	var _grid_plan_tasks = this.grid_plan_tasks;
 	this.grid_plan_tasks.attachEvent('onDrag', function(sid, tid) {
 		if (_grid_plan_tasks.doesRowExist(sid))
@@ -193,12 +251,13 @@ TaskPlan.prototype.initPlanTasks = function(vid) {
 
 		});
 
+		_plan.refreshPlanTasksTitle(1);
+
 		return true;
 	});
 
 	this.grid_plan_tasks.init();
 	this.grid_plan_tasks.setSkin("dhx_terrace");
-
 
 	$.get("/ajax/plan_tasks?id=" + vid, function(serverdata, retstatus) {
 		var data = new Object();
@@ -224,6 +283,7 @@ TaskPlan.prototype.initPlanTasks = function(vid) {
 				data.rows[i].data[12] = Task.time2text(serverdata[i].plan_qatesttime);
 			}
 
-		_grid_plan_tasks.parse(data,"json");	
+		_grid_plan_tasks.parse(data,"json");
+		_plan.refreshPlanTasksTitle(0);
 	});
 }
