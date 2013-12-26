@@ -18,6 +18,7 @@ TaskGrid.prototype.init = function(selector) {
 	this.grid.setColSorting("int,str,str,str,str,str,str,str,str,date,date,date,date");
 	this.grid.enableAutoWidth(true);
 	this.grid.enableAutoHeight(true);
+	
 	this.grid.setStyle("text-align:center;");
 	this.grid.init();
 	this.grid.setSkin("dhx_terrace");	

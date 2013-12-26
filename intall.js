@@ -1,13 +1,21 @@
 
 
-var User = require('./model/User.js')
-var Task = require('./model/Task.js')
+var User = require('./model/User.js');
+var Task = require('./model/Task.js');
+var PlanVersion = require('./model/PlanVersion');
+var PlanTasks = require('./model/PlanTasks');
 
 User.db.createTable();
 User.db.alterTable();
 
 Task.db.createTable();
 Task.db.alterTable();
+
+PlanVersion.db.createTable();
+PlanVersion.db.alterTable();
+
+PlanTasks.db.createTable();
+PlanTasks.db.alterTable();
 
 
 var names = ['王同学', '程同学', '林同学', '廖同学', '范同学', '陈同学', '江同学'];
@@ -59,4 +67,4 @@ function test() {
 	}
 }
 
-test();
+//test();

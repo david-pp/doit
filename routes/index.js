@@ -68,8 +68,6 @@ exports.doLogin = function(req, res){
       }
     }
   });
-
-
 }
 
 exports.logout = function(req, res){
@@ -108,8 +106,9 @@ exports.ajax_deluser = function(req, res) {
 
 
 exports.ajax_tasklist = function(req, res) {
-  console.log(req.query);
+  //console.log(req.query);
 
+  // 根据状态取任务列表
   if (req.query.status) {
 
     var ordertext = 'id desc';
@@ -129,7 +128,19 @@ exports.ajax_tasklist = function(req, res) {
       res.json(results);
       //console.log(results);
     });
-  } else {
+  }
+  // 根据需求类型获取任务列表 
+  else if (req.query.type) {
+
+    if (req.query.type == 'forplan') {
+      Task.db.select(null, 'where `status` !='+ Task.status.released + ' order by id desc ', function(err, results){
+      res.json(results);
+      //console.log(results);
+      });
+    }
+  }
+  // 获得所有任务 
+  else {
      Task.db.select(null, null, function(err, results){
       //console.log(results);
       res.json(results);

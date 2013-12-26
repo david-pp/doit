@@ -17,6 +17,7 @@ PlanVersion.db = new DBHelper({
 		fields: [
 			{ name:'id', type:'int(10)', default: 1},                          // 编号
 			{ name:'desc', type:'varchar(256)', default: ''},                  // 描述
+			{ name:'status', type:'int(10)', default: 0},                    // 状态
 			{ name:'category', type:'int(10)', default: 0},                    // 分类
 			{ name:'time_create', type:'int(10)', default: 0},                 // 创建时间
 			{ name:'time_make', type:'int(10)', default: 0},                   // 版本时间           
